@@ -14,10 +14,23 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
-package main
+package cmd
 
-import "github.com/TeoDev1611/chevify/cmd"
+import (
+	"github.com/spf13/cobra"
+)
 
-func main() {
-	cmd.Execute()
+var rootCmd = &cobra.Command{
+	Use:   "chevify",
+	Short: "Tool designed to manage several code editors configurations",
+	Long: `Chevify is a tool designed to make your life easier by being able to manage several code editors
+configurations simultaneously and allow you to fully seamlessly transition between them.
+
+Editors supported: Neovim Vim soon work in progreess!
+
+https://github.com/TeoDev1611/chevify`,
+}
+
+func Execute() {
+	cobra.CheckErr(rootCmd.Execute())
 }

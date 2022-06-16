@@ -4,12 +4,12 @@ dprint-sh:
 dprint-ps1:
 	iwr https://dprint.dev/install.ps1 -useb | iex
 
-dependencies:
+deps:
 	go mod tidy
 
-format:
+fmt:
 	dprint fmt
-	go fmt ./..
+	gofmt -l -s -w .
 
 install:
 	go install
