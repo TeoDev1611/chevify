@@ -1,6 +1,7 @@
 package browser
 
 import (
+	"net/url"
 	"os/exec"
 	"runtime"
 
@@ -26,4 +27,9 @@ func OpenUrlBrowser(url string) {
 	if err != nil {
 		log.Error(err.Error())
 	}
+}
+
+func IsUrl(str string) bool {
+	u, err := url.Parse(str)
+	return err == nil && u.Scheme != "" && u.Host != ""
 }

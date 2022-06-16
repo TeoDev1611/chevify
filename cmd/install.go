@@ -26,7 +26,8 @@ import (
 
 var (
 	name, branch, editor string
-	speed, force         bool
+	force                bool
+	speed                int
 )
 
 // installCmd represents the install command
@@ -55,7 +56,7 @@ func init() {
 
 	installCmd.Flags().StringVarP(&name, "name", "n", "", "Change the alias name for the configuration!")
 	installCmd.Flags().StringVarP(&editor, "editor", "e", "", "The editor to install the config!")
-	installCmd.Flags().StringVarP(&branch, "branch", "b", "main", "Change the branch for download the repo!")
-	installCmd.Flags().BoolVarP(&speed, "speed", "s", true, "Clone the repo with the depth 999 value :p!")
+	installCmd.Flags().StringVarP(&branch, "branch", "b", "", "Change the branch for download the repo!")
+	installCmd.Flags().IntVarP(&speed, "speed", "s", 0, "Clone the repo with the depth 999 value :p!")
 	installCmd.Flags().BoolVarP(&force, "force", "F", false, "Force the clone if exists the repo in the config recopilation!")
 }

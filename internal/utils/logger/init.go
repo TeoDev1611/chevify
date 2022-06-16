@@ -34,3 +34,11 @@ func Fatal(msg string) {
 	string := fmt.Sprintf("CHEVIFY -> %s", msg)
 	log.Fatal(string)
 }
+
+func LogPath() string {
+	path, err := log.GetLogPath()
+	if err != nil {
+		panic(err.Error())
+	}
+	return path
+}
