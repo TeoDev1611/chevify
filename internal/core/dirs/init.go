@@ -3,8 +3,8 @@ package dirs
 import (
 	"path/filepath"
 
+	"github.com/TeoDev1611/chevify/internal/core/config"
 	log "github.com/TeoDev1611/chevify/internal/utils/logger"
-	"github.com/kirsle/configdir"
 )
 
 /// ConfigFile     string
@@ -12,15 +12,12 @@ import (
 /// BaseConfigPath string
 /// AliasesPath    string
 
-var ConfigPath = configdir.LocalConfig("chevify")
-
 func Directories() map[string]string {
-	err := configdir.MakePath(ConfigPath) // Ensure it exists.
-	if err != nil {
-		log.Fatal(err.Error())
-	}
+	config.MakeConfigFolder()
 	return map[string]string{
-		"LogFile":    log.LogPath(),
-		"ConfigFile": filepath.Join(ConfigPath, "settings.json"),
+		"LogFile":        log.LogPath(),
+		"ConfigFile":     filepath.Join(config.ConfigPath, "settings.json"),
+		"BaseConfigPath": config.ConfigPath,
+		"AliasesPath":    filepath.Join(config.ConfigPath, "aliases"),
 	}
 }
